@@ -1,0 +1,13 @@
+diff --git a/node_modules/@nestjs/microservices/client/client-grpc.js b/node_modules/@nestjs/microservices/client/client-grpc.js
+index cb260c2..605701a 100644
+--- a/node_modules/@nestjs/microservices/client/client-grpc.js
++++ b/node_modules/@nestjs/microservices/client/client-grpc.js
+@@ -175,6 +175,8 @@ class ClientGrpcProxy extends client_proxy_1.ClientProxy {
+             }
+             return new rxjs_1.Observable(observer => {
+                 client[methodName](...args, (error, data) => {
++                    console.log(`[Client-grpc] Got grpc message, emitting to observable: ${JSON.stringify(data)}`);
++
+                     if (error) {
+                         return observer.error(error);
+                     }
